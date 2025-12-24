@@ -17,7 +17,7 @@ app = Flask(__name__)
 app.secret_key = os.environ.get("SESSION_SECRET", "expense_tracker_secret_key")
 
 # Configure the SQLAlchemy database connection
-database_url = os.environ.get("DATABASE_URL")
+DATABASE_URL = os.environ['postgresql://postgres:DpEQ2d.XdjrUpg8@db.ghomwiypocjqbvwavefd.supabase.co:5432/postgres'] 
 if not database_url:
     # Fallback to SQLite for local development or when no DATABASE_URL is provided
     database_url = "sqlite:///expense_tracker.db"

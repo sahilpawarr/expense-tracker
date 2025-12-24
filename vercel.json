@@ -1,0 +1,30 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "wsgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "runtime": "python3.9",
+                "requirementsPath": "vercel-requirements.txt"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/wsgi.py"
+        }
+    ],
+    "env": {
+        "PYTHONUNBUFFERED": "1",
+        "SESSION_SECRET": {
+            "development": "dev_secret_key_for_local_use_only",
+            "production": "@session_secret"
+        }
+    }
+}
